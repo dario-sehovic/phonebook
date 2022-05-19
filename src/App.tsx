@@ -1,5 +1,7 @@
 import React from 'react';
 
-const App = () => <div>Phonebook</div>;
+function App() {
+  return <div>Phonebook</div>;
+}
 
 export default App;
