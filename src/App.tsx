@@ -1,7 +1,8 @@
 import React from 'react';
+import Login from './pages';
 
 function App() {
-  return <div>Phonebook</div>;
+  return <Login />;
 }
 
 export default App;

@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
 
 function Login() {
-  const [phone, setPhone] = useState('');
+  const formik = useFormik({
+    initialValues: {
+      phone: '',
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <div>
       <input
         type="text"
         placeholder="Phone"
-        value={phone}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value)}
+        name="phone"
+        value={formik.values.phone}
+        onChange={formik.handleChange}
       />
       <button type="submit">Login</button>
     </div>
