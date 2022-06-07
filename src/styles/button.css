@@ -1,0 +1,67 @@
+.button {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0 1.5rem;
+    height: 3rem;
+    line-height: 3rem;
+    border: 0;
+    border-radius: var(--global-border-radius);
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    overflow: hidden;
+}
+
+.button:hover,
+.button:focus,
+.button:active {
+    box-shadow: var(--global-shadow-raised);
+    background-position: 100% 0;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+
+.button-primary {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    transition: all 300ms ease-in-out;
+    background-size: 300% 100%;
+    background-image: linear-gradient(
+            45deg,
+            var(--color-primary),
+            var(--color-primary-container),
+            var(--color-primary-container),
+            var(--color-primary)
+    );
+}
+
+.button-success {
+    background-color: var(--color-success);
+    color: var(--color-text-inverted);
+}
+
+.button-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+}
+
+.button-tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-on-tertiary);
+}
+
+.button:last-child {
+    margin-right: 0;
+}
+
+.button svg {
+    vertical-align: middle;
+}

@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    height: 100%;
+    font-family: var(--global-font-family);
+    background-color: var(--color-background);
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.backdrop.mobile,
+.backdrop.open {
+    visibility: visible;
+}
+
+@media screen and (min-width: 900px) {
+    .backdrop.mobile {
+        visibility: hidden;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: var(--color-on-background);
+}

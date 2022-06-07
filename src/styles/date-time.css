@@ -1,0 +1,171 @@
+.date-time-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.date-wrapper {
+    width: 70%;
+}
+
+.date-time-label {
+    position: absolute;
+    color: var(--color-on-background);
+    font-size: 0.75rem;
+    left: 0.75rem;
+    top: -0.5rem;
+    background-color: var(--color-background);
+    padding: 0 0.25rem;
+    transition: var(--global-transition);
+}
+
+.date-time-input {
+    width: 100%;
+    padding: 0.25rem 1rem 0;
+    line-height: 1.5rem;
+    height: 3rem;
+    font-family: var(--global-font-family);
+    border: 1px solid var(--color-outline);
+    border-right-width: 0;
+    border-radius: var(--global-border-radius) 0 0 var(--global-border-radius);
+    font-size: 0.875rem;
+    background-color: transparent;
+    color: var(--color-on-background);
+    cursor: pointer;
+    -webkit-appearance: none;
+    transition: var(--global-transition);
+}
+
+.date-time-wrapper-open .date-time-input,
+.date-time-input:focus {
+    border-color: var(--color-primary);
+    border-width: 2px;
+    border-right-width: 1px;
+}
+
+.date-time-wrapper-open .date-time-label,
+.date-time-input:focus + .date-time-label {
+    color: var(--color-primary);
+}
+
+.date-time-wrapper .select-input {
+    border-radius: 0 var(--global-border-radius) var(--global-border-radius) 0;
+}
+
+.date-time-wrapper .select-dropdown {
+    left: unset;
+    right: 0;
+}
+
+.date-time-wrapper-open .select-input {
+    border-left-color: var(--color-primary);
+}
+
+.date-time-dropdown {
+    position: absolute;
+    top: 3.5rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 10rem;
+    border-radius: var(--global-border-radius);
+    box-shadow: var(--global-shadow-raised);
+    background-color: var(--color-surface);
+    margin: 0;
+    padding: 0.5rem;
+    list-style: none;
+    z-index: 1000;
+}
+
+.date-time-wrapper .select-wrapper {
+    width: 30%;
+}
+
+.date-calendar-controls {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.date-calendar-controls button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: none;
+    padding: 0.25rem;
+    margin: 0 1rem;
+}
+
+.date-calendar-controls button:disabled {
+    visibility: hidden;
+}
+
+.date-calendar-controls svg {
+    fill: var(--color-on-surface);
+    color: var(--color-on-surface);
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.date-calendar-controls button:hover {
+    background-color: var(--color-primary);
+}
+
+.date-calendar-controls button:hover svg {
+    fill: var(--color-surface);
+    color: var(--color-surface);
+}
+
+.date-calendar-controls-label {
+    flex-grow: 1;
+    display: block;
+    text-align: center;
+    color: var(--color-on-surface);
+    height: 2rem;
+    line-height: 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.date-calendar table {
+    width: 100%;
+}
+
+.date-calendar td,
+.date-calendar th {
+    width: calc(100% / 7);
+    height: 2.5rem;
+    text-align: center;
+}
+
+.date-calendar th {
+    color: var(--color-on-surface);
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.date-calendar td button {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 1rem;
+    line-height: 2rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+    color: var(--color-on-surface);
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.date-calendar td button:disabled,
+.date-calendar td button.hidden {
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+}
+
+.date-calendar td button:not(:disabled):hover,
+.date-calendar td button:not(:disabled).active {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}

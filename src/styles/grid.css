@@ -1,0 +1,147 @@
+.grid-small-1 {
+    grid-column: span 1;
+}
+
+.grid-small-2 {
+    grid-column: span 2;
+}
+
+.grid-small-3 {
+    grid-column: span 3;
+}
+
+.grid-small-4 {
+    grid-column: span 4;
+}
+
+.grid-small-5 {
+    grid-column: span 5;
+}
+
+.grid-small-6 {
+    grid-column: span 6;
+}
+
+.grid-small-7 {
+    grid-column: span 7;
+}
+
+.grid-small-8 {
+    grid-column: span 8;
+}
+
+.grid-small-9 {
+    grid-column: span 9;
+}
+
+.grid-small-10 {
+    grid-column: span 10;
+}
+
+.grid-small-11 {
+    grid-column: span 11;
+}
+
+.grid-small-12 {
+    grid-column: span 12;
+}
+
+@media screen and (min-width: 900px) {
+    .grid-medium-1 {
+        grid-column: span 1;
+    }
+
+    .grid-medium-2 {
+        grid-column: span 2;
+    }
+
+    .grid-medium-3 {
+        grid-column: span 3;
+    }
+
+    .grid-medium-4 {
+        grid-column: span 4;
+    }
+
+    .grid-medium-5 {
+        grid-column: span 5;
+    }
+
+    .grid-medium-6 {
+        grid-column: span 6;
+    }
+
+    .grid-medium-7 {
+        grid-column: span 7;
+    }
+
+    .grid-medium-8 {
+        grid-column: span 8;
+    }
+
+    .grid-medium-9 {
+        grid-column: span 9;
+    }
+
+    .grid-medium-10 {
+        grid-column: span 10;
+    }
+
+    .grid-medium-11 {
+        grid-column: span 11;
+    }
+
+    .grid-medium-12 {
+        grid-column: span 12;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .grid-large-1 {
+        grid-column: span 1;
+    }
+
+    .grid-large-2 {
+        grid-column: span 2;
+    }
+
+    .grid-large-3 {
+        grid-column: span 3;
+    }
+
+    .grid-large-4 {
+        grid-column: span 4;
+    }
+
+    .grid-large-5 {
+        grid-column: span 5;
+    }
+
+    .grid-large-6 {
+        grid-column: span 6;
+    }
+
+    .grid-large-7 {
+        grid-column: span 7;
+    }
+
+    .grid-large-8 {
+        grid-column: span 8;
+    }
+
+    .grid-large-9 {
+        grid-column: span 9;
+    }
+
+    .grid-large-10 {
+        grid-column: span 10;
+    }
+
+    .grid-large-11 {
+        grid-column: span 11;
+    }
+
+    .grid-large-12 {
+        grid-column: span 12;
+    }
+}

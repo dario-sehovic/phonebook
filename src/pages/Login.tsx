@@ -1,26 +1,21 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import { getCountryForTimezone } from 'countries-and-timezones';
+import Phone from '../components/fields/Phone';
 
 function Login() {
-  const formik = useFormik({
-    initialValues: {
-      phone: '',
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+  const currentCountry = getCountryForTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)?.id || 'EN';
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneCountry, setPhoneCountry] = useState(currentCountry);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Phone"
-        name="phone"
-        value={formik.values.phone}
-        onChange={formik.handleChange}
+    <div style={{ margin: 50 }}>
+      <Phone
+        label="Phone number"
+        country={phoneCountry}
+        value={phoneNumber}
+        onChange={setPhoneNumber}
+        onSelect={setPhoneCountry}
       />
-      <button type="submit">Login</button>
     </div>
   );
 }
