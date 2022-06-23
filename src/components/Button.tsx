@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Icon from '@mdi/react';
+import { mdiLoading } from '@mdi/js';
 import classNames from 'classnames';
 
 type ButtonType = 'submit' | 'button' | 'link' | 'label';
 type ButtonVariant = 'primary' | 'secondary' | 'success' | 'tertiary';
 
 interface ButtonProps {
-  block?: boolean,
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void,
-  text?: React.ReactText,
-  to?: string,
-  type?: ButtonType,
-  variant?: ButtonVariant,
+  block?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  loading?: boolean;
+  text?: string;
+  to?: string;
+  type?: ButtonType;
+  variant?: ButtonVariant;
 }
 
 function Button({
   block = false,
+  loading,
   onClick,
   text = 'Submit',
   to = '/',
@@ -27,6 +31,15 @@ function Button({
     `button--${variant}`,
     { 'button--block': block },
   );
+
+  if (loading) {
+    return (
+      <button type="button" className={buttonClassNames} disabled>
+        <Icon size={1} path={mdiLoading} spin />
+        {text}
+      </button>
+    );
+  }
 
   if (type === 'link') return <Link to={to} className={buttonClassNames}>{text}</Link>;
   if (type === 'submit') return <button type="submit" className={buttonClassNames}>{text}</button>;

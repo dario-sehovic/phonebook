@@ -36,7 +36,7 @@ function Phone({
   }, [onChange, onSelect]);
 
   const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const numberValue = event.target.value.replace(/\D/g, '');
+    const numberValue = `${event.target.value.split('')?.[0] === '0' ? '' : '0'}${event.target.value.replace(/\D/g, '')}`;
 
     if (validatePhoneNumberLength(numberValue, country as PhoneCountryCode) === 'TOO_LONG') {
       return;
@@ -47,6 +47,9 @@ function Phone({
     const includesEnd = event.target.value.includes(')');
     if ((includesStart && !includesEnd) || (!includesStart && includesEnd)) {
       formattedValue = formattedValue.replace('(', '').replace(')', '');
+    }
+    if (formattedValue.split('')?.[0] === '0') {
+      formattedValue = formattedValue.substring(1);
     }
     onChange(formattedValue);
   }, [country, onChange]);
