@@ -56,33 +56,34 @@ function Select({
   ), [options, value]);
 
   return (
-    <div ref={selectWrapperRef} className="select-wrapper">
+    <div ref={selectWrapperRef} className="input__wrapper">
       <input
         ref={selectInputRef}
         type="text"
         id={id}
-        className="select-input"
+        className="input__field"
         value={value}
         readOnly
         onFocus={handleFocus}
       />
-      {displayValue && <div className="select-value">{renderValue(displayValue)}</div>}
-      <label htmlFor={id} className="select-label">{label}</label>
+      {displayValue && <div className="input__value">{renderValue(displayValue)}</div>}
+      <label htmlFor={id} className="input__label">{label}</label>
       {dropdownOpen && (
-        <ul className="select-dropdown">
-          {options.map((option: SelectOption) => (
-            <li key={option.id} className="select-option">
-              <button
-                className="select-option-button"
-                type="button"
-                onClick={handleClick}
-                value={option.id}
-              >
-                {renderOption(option)}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="input__dropdown__container">
+          <ul className="input__dropdown">
+            {options.map((option: SelectOption) => (
+              <li key={option.id} className="input__option">
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  value={option.id}
+                >
+                  {renderOption(option)}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

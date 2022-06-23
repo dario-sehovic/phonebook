@@ -1,0 +1,27 @@
+.card {
+    width: 100%;
+    border-radius: var(--global-border-radius);
+    background-color: var(--color-surface);
+    backdrop-filter: var(--global-backdrop-blur);
+    box-shadow: var(--global-shadow-raised);
+}
+
+.card__header {
+    padding: 2rem 2rem 0;
+}
+
+.card__content {
+    padding: 2rem;
+}
+
+.card__footer {
+    padding: 0 2rem 2rem;
+}
+
+.card__title {
+    color: var(--color-on-surface);
+    font-family: var(--global-font-family);
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin: 0;
+}

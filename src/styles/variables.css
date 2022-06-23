@@ -2,6 +2,7 @@
     --global-font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --global-border-radius: 0.5rem;
     --global-transition: all 100ms ease-in-out;
+    --global-backdrop-blur: blur(2rem);
     --global-shadow-shallow:
         0 1px 1px 0 rgba(0, 0, 0, 0.14),
         0 2px 1px -1px rgba(0, 0, 0, 0.12),
@@ -10,8 +11,6 @@
         0 2px 2px 0 rgba(0, 0, 0, 0.14),
         0 3px 1px -2px rgba(0, 0, 0, 0.12),
         0 1px 5px 0 rgba(0, 0, 0, 0.20);
-
-    --color-primary: #8BCDFF;
     --color-on-primary: #003350;
     --color-primary-container: #5086af;
     --color-on-primary-container: #000000;
@@ -29,11 +28,15 @@
     --color-on-error-container: #FFDAD4;
     --color-background: #121212;
     --color-on-background: #E2E2E5;
-    --color-surface: #1A1C1E;
-    --color-on-surface: #E2E2E5;
-    --color-surface-variant: #41474D;
     --color-on-surface-variant: #C2C7CE;
-    --color-outline: #29292b;
+
+
+    --color-primary: rgba(116, 117, 180, 1);
+    --color-on-surface: rgba(226, 226, 229, 1);
+    --color-surface: rgba(23, 22, 29, 0.8);
+    --color-surface-variant: rgba(59, 57, 70, 0.5);
+    --color-outline: rgba(255, 255, 255, 0.05);
+    --color-outline-active: rgba(255, 255, 255, 0.5);
 }
 
 .theme-dark {

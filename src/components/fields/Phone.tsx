@@ -54,17 +54,17 @@ function Phone({
   const renderOption = useCallback((option: SelectOption) => (
     <>
       <img
-        className="phone-country-code-option-flag"
+        className="input__option-flag"
         loading="lazy"
         width="32"
         src={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png`}
         srcSet={`https://flagcdn.com/w80/${option.code.toLowerCase()}.png 2x`}
         alt={option.label}
       />
-      <div className="phone-country-code-option-label">
+      <div className="input__option-label">
         {option.label}
       </div>
-      <div className="phone-country-code-option-code">
+      <div className="input__option-code">
         {`+${option.phone}`}
       </div>
     </>
@@ -73,21 +73,21 @@ function Phone({
   const renderValue = useCallback((option: SelectOption) => (
     <>
       <img
-        className="phone-country-code-value-flag"
+        className="input__value-flag"
         loading="lazy"
         width="32"
         src={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png`}
         srcSet={`https://flagcdn.com/w80/${option.code.toLowerCase()}.png 2x`}
         alt={option.label}
       />
-      <div className="phone-country-code-value-code">
+      <div className="input__value-label">
         {`+${option.phone}`}
       </div>
     </>
   ), []);
 
   return (
-    <div className="phone-wrapper">
+    <div className="input__wrapper">
       <Select
         label="Country code"
         value={country}
@@ -96,11 +96,11 @@ function Phone({
         renderValue={renderValue}
         onChange={handleSelect}
       />
-      <div className="phone-number-wrapper">
-        <label htmlFor={id} className="phone-number-label">{label}</label>
+      <div className="input__wrapper">
+        <label htmlFor={id} className="input__label">{label}</label>
         <input
           id={id}
-          className="phone-number-input"
+          className="input__field"
           value={value}
           onChange={handleChange}
           type="tel"

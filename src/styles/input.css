@@ -1,0 +1,147 @@
+.input__wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.input__wrapper > .input__wrapper {
+    display: block;
+    width: 120px;
+}
+
+.input__wrapper > .input__wrapper:not(:first-child) {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.input__label {
+    position: absolute;
+    color: var(--color-on-background);
+    font-size: 0.75rem;
+    left: 0.75rem;
+    top: 0.75rem;
+    background-color: transparent;
+    padding: 0 0.25rem;
+    transition: var(--global-transition);
+}
+
+.input__field {
+    width: 100%;
+    padding: 1.5rem 1rem 0;
+    line-height: 1.5rem;
+    height: 4rem;
+    font-family: var(--global-font-family);
+    border: 1px solid var(--color-outline);
+    border-radius: var(--global-border-radius);
+    font-size: 0.875rem;
+    background-color: transparent;
+    color: var(--color-on-background);
+    cursor: text;
+    -webkit-appearance: none;
+    transition: var(--global-transition);
+}
+
+.input__field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.input__value {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 1rem 0;
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    font-family: var(--global-font-family);
+    font-size: 0.875rem;
+    background-color: transparent;
+    color: var(--color-on-background);
+    cursor: pointer;
+    -webkit-appearance: none;
+    transition: var(--global-transition);
+}
+
+.input__dropdown__container {
+    position: absolute;
+    top: 4.5rem;
+    left: 0;
+    width: 18rem;
+    height: 16rem;
+    box-shadow: var(--global-shadow-raised);
+    z-index: 1000;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center bottom;
+    border-radius: var(--global-border-radius);
+    overflow: hidden;
+}
+
+.input__dropdown {
+    margin: 0; 
+    padding: 0.5rem 0;
+    background-color: var(--color-surface-variant);
+    backdrop-filter: var(--global-backdrop-blur);
+    list-style: none;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.input__option {
+    margin: 0;
+    padding: 0;
+    z-index: 1010;
+}
+
+.input__option > button {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    height: 3rem;
+    line-height: 3rem;
+    color: var(--color-on-background);
+    transition: var(--global-transition);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: left;
+    align-items: center;
+    z-index: 1011;
+}
+
+.input__option > button:hover {
+    background-color: var(--color-surface);
+}
+
+.input__option > button:active {
+    background-color: var(--color-primary);
+}
+
+.input__value-flag,
+.input__option-flag {
+    margin-right: 1rem;
+    pointer-events: none;
+    width: 1.5rem;
+}
+
+.input__option-label {
+    flex: 1;
+    margin-right: 1rem;
+    pointer-events: none;
+}
+
+.input__value-label {
+    flex: 1;
+    text-align: left;
+}
+
+.input__option-code {
+    opacity: 0.5;
+    pointer-events: none;
+}

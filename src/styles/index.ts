@@ -3,9 +3,6 @@ import './global.css';
 
 import './grid.css';
 import './button.css';
+import './card.css';
 import './container.css';
-import './date-time.css';
-import './header.css';
-import './phone.css';
-import './select.css';
-import './vehicle.css';
+import './input.css';
