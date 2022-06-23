@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getCountryForTimezone } from 'countries-and-timezones';
 import Phone from '../components/fields/Phone';
 import Card from '../components/Card';
+import Button from '../components/Button';
 
 function Login() {
   const currentCountry = getCountryForTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)?.id || 'EN';
@@ -18,6 +19,7 @@ function Login() {
           onChange={setPhoneNumber}
           onSelect={setPhoneCountry}
         />
+        <Button text="Log in" />
       </Card>
     </div>
   );

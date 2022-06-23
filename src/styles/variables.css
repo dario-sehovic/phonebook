@@ -12,7 +12,7 @@
         0 3px 1px -2px rgba(0, 0, 0, 0.12),
         0 1px 5px 0 rgba(0, 0, 0, 0.20);
     --color-on-primary: #003350;
-    --color-primary-container: #5086af;
+    --color-primary-container: #bbb8ec;
     --color-on-primary-container: #000000;
     --color-secondary: #B7C8D9;
     --color-on-secondary: #22323F;
@@ -42,7 +42,7 @@
 .theme-dark {
     --color-primary: #0062a2;
     --color-on-primary: #ffffff;
-    --color-primary-container: #cfe4ff;
+    --color-primary-container: #bbb8ec;
     --color-on-primary-container: #001d36;
     --color-secondary: #006b5e;
     --color-on-secondary: #ffffff;
