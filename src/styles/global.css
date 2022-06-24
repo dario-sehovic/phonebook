@@ -15,7 +15,7 @@ body {
     font-family: var(--global-font-family);
 }
 
-html {
+body {
     background-color: var(--color-surface);
     background-image: url(../images/background-light.jpg);
     background-size: cover;
@@ -23,7 +23,7 @@ html {
     background-position: center bottom;
 }
 
-html.theme--dark {
+body.theme--dark {
     background-image: url(../images/background-dark.jpg);
 }
 

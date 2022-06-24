@@ -18,16 +18,16 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: ThemeValues.Light,
+  theme: ThemeValues.Dark,
   toggleTheme: () => console.warn('No theme provider.'),
 });
 
 interface ThemeContextProviderProps {
-  children: any;
+  children: React.ReactNode;
 }
 
 function Theme({ children }: ThemeContextProviderProps) {
-  const [theme, setTheme] = useState<ThemeValues>(ThemeValues.Light);
+  const [theme, setTheme] = useState<ThemeValues>(ThemeValues.Dark);
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme: ThemeValues) => {
@@ -61,4 +61,4 @@ function Theme({ children }: ThemeContextProviderProps) {
 const useTheme = () => useContext(ThemeContext);
 
 export default Theme;
-export { useTheme };
+export { useTheme, ThemeValues };
