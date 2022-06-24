@@ -26,6 +26,8 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [contacts, setContacts] = useState<Array<Contact>>([]);
   const [sortAscending, setSortAscending] = useState(true);
+  const [filterEmptyEmails, setFilterEmptyEmails] = useState(false);
+  const [filterEmptyPhones, setFilterEmptyPhones] = useState(false);
 
   const sortContact = useCallback((prevContact: Contact, nextContact: Contact) => {
     const prevFullName = (prevContact.firstName + prevContact.lastName).toLowerCase();
@@ -36,6 +38,13 @@ function Home() {
 
     return 0;
   }, [sortAscending]);
+
+  const filterContact = useCallback((contact: Contact) => {
+    if (filterEmptyEmails && !contact.emailAddress) return false;
+    if (filterEmptyPhones && !contact.phoneNumber) return false;
+
+    return true;
+  }, [filterEmptyEmails, filterEmptyPhones]);
 
   useEffect(() => {
     (async () => {
@@ -87,12 +96,14 @@ function Home() {
             onClick={() => setSortAscending((prevSortAscending) => !prevSortAscending)}
           />
           <Component.Action
+            selected={filterEmptyPhones}
             icon={mdiPhoneOutline}
-            onClick={() => {}}
+            onClick={() => setFilterEmptyPhones((prevFilterEmptyPhones) => !prevFilterEmptyPhones)}
           />
           <Component.Action
+            selected={filterEmptyEmails}
             icon={mdiEmailOutline}
-            onClick={() => {}}
+            onClick={() => setFilterEmptyEmails((prevFilterEmptyEmails) => !prevFilterEmptyEmails)}
           />
           <Component.Action
             icon={mdiLightbulbOutline}
@@ -111,7 +122,7 @@ function Home() {
         />
       </Component.Card>
       <Component.Card title="Contacts">
-        {contacts.sort(sortContact).map(getContact)}
+        {contacts.filter(filterContact).sort(sortContact).map(getContact)}
       </Component.Card>
     </div>
   );
