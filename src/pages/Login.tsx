@@ -6,6 +6,7 @@ import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
 import Phone from '../components/fields/Phone';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import Text from '../components/fields/Text';
 import { auth } from '../services/firebase';
 import countries, { CountryCode } from '../localization/country-codes';
 
@@ -17,6 +18,7 @@ function Login() {
   const [success, setSuccess] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneCountry, setPhoneCountry] = useState(currentCountry);
+  const [verificationCode, setVerificationCode] = useState('');
 
   const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,17 +66,15 @@ function Login() {
   const verifyForm = useMemo(() => (
     <form onSubmit={handleSubmit}>
       <fieldset disabled={loading}>
-        <Phone
-          label="Phone number"
-          country={phoneCountry}
-          value={phoneNumber}
-          onChange={setPhoneNumber}
-          onSelect={setPhoneCountry}
+        <Text
+          label="Verification code"
+          value={verificationCode}
+          onChange={setVerificationCode}
         />
         <Button text={!loading ? 'Verify' : 'Verifying...'} loading={loading} />
       </fieldset>
     </form>
-  ), [handleSubmit, loading, phoneCountry, phoneNumber]);
+  ), [handleSubmit, loading, verificationCode]);
 
   return (
     <div className="container container--center">
