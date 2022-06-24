@@ -10,19 +10,23 @@
     margin-bottom: 0;
 }
 
-.input__wrapper > .input__wrapper {
+.input__phone {
+    display: flex;
+}
+
+.input__phone > .input__wrapper {
     display: block;
     width: 120px;
 }
 
-.input__wrapper > .input__wrapper:not(:first-child) {
+.input__phone > .input__wrapper:not(:first-child) {
     flex: 1;
     margin-left: 1rem;
 }
 
 .input__label {
     position: absolute;
-    color: var(--color-on-background);
+    color: var(--color-on-surface-variant);
     font-size: 0.75rem;
     left: 0.75rem;
     top: 0.75rem;
@@ -45,7 +49,7 @@
     border-radius: var(--global-border-radius);
     font-size: 0.875rem;
     background-color: transparent;
-    color: var(--color-on-background);
+    color: var(--color-on-surface);
     cursor: text;
     -webkit-appearance: none;
     transition: var(--global-transition);
@@ -74,7 +78,7 @@ textarea.input__field {
     font-family: var(--global-font-family);
     font-size: 0.875rem;
     background-color: transparent;
-    color: var(--color-on-background);
+    color: var(--color-on-surface);
     cursor: pointer;
     -webkit-appearance: none;
     transition: var(--global-transition);
@@ -88,12 +92,16 @@ textarea.input__field {
     height: 16rem;
     box-shadow: var(--global-shadow-raised);
     z-index: 1000;
-    background-image: url(../images/background.jpg);
+    background-image: url(../images/background-light.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center bottom;
     border-radius: var(--global-border-radius);
     overflow: hidden;
+}
+
+.theme--dark .input__dropdown__container {
+    background-image: url(../images/background-dark.jpg);
 }
 
 .input__dropdown {
@@ -120,7 +128,7 @@ textarea.input__field {
     font-size: 0.875rem;
     height: 3rem;
     line-height: 3rem;
-    color: var(--color-on-background);
+    color: var(--color-on-surface);
     transition: var(--global-transition);
     border: none;
     background-color: transparent;

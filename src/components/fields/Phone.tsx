@@ -91,24 +91,26 @@ function Phone({
 
   return (
     <div className="input__wrapper">
-      <Select
-        label="Country code"
-        value={country}
-        options={options}
-        renderOption={renderOption}
-        renderValue={renderValue}
-        onChange={handleSelect}
-      />
-      <div className="input__wrapper">
-        <label htmlFor={id} className="input__label">{label}</label>
-        <input
-          id={id}
-          className="input__field"
-          value={value}
-          onChange={handleChange}
-          type="tel"
-          autoComplete="new-password"
+      <div className="input__phone">
+        <Select
+          label="Country code"
+          value={country}
+          options={options}
+          renderOption={renderOption}
+          renderValue={renderValue}
+          onChange={handleSelect}
         />
+        <div className="input__wrapper">
+          <label htmlFor={id} className="input__label">{label}</label>
+          <input
+            id={id}
+            className="input__field"
+            value={value}
+            onChange={handleChange}
+            type="tel"
+            autoComplete="new-password"
+          />
+        </div>
       </div>
     </div>
   );
