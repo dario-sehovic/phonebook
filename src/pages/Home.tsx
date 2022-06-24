@@ -4,8 +4,8 @@ import {
   mdiEmailOutline,
   mdiLightbulbOutline,
   mdiPhoneOutline,
-  mdiPower,
-  mdiSortAscending,
+  mdiPower, mdiSortAlphabeticalAscending,
+  mdiSortAlphabeticalDescending,
 } from '@mdi/js';
 import { db } from '../services/firebase';
 import * as Component from '../components';
@@ -25,6 +25,17 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [contacts, setContacts] = useState<Array<Contact>>([]);
+  const [sortAscending, setSortAscending] = useState(true);
+
+  const sortContact = useCallback((prevContact: Contact, nextContact: Contact) => {
+    const prevFullName = (prevContact.firstName + prevContact.lastName).toLowerCase();
+    const nextFullName = (nextContact.firstName + nextContact.lastName).toLowerCase();
+
+    if (prevFullName > nextFullName) return sortAscending ? 1 : -1;
+    if (prevFullName < nextFullName) return sortAscending ? -1 : 1;
+
+    return 0;
+  }, [sortAscending]);
 
   useEffect(() => {
     (async () => {
@@ -72,8 +83,8 @@ function Home() {
       <Component.Card>
         <div className="action__group">
           <Component.Action
-            icon={mdiSortAscending}
-            onClick={() => {}}
+            icon={sortAscending ? mdiSortAlphabeticalAscending : mdiSortAlphabeticalDescending}
+            onClick={() => setSortAscending((prevSortAscending) => !prevSortAscending)}
           />
           <Component.Action
             icon={mdiPhoneOutline}
@@ -100,7 +111,7 @@ function Home() {
         />
       </Component.Card>
       <Component.Card title="Contacts">
-        {contacts.map(getContact)}
+        {contacts.sort(sortContact).map(getContact)}
       </Component.Card>
     </div>
   );

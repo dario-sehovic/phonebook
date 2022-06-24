@@ -48,8 +48,6 @@ function Theme({ children }: ThemeContextProviderProps) {
   useEffect(() => {
     const storageTheme = window.localStorage.getItem('theme');
 
-    console.log(storageTheme);
-
     if (storageTheme === ThemeValues.Light) {
       setTheme(ThemeValues.Light);
       document.body.classList.remove('theme--dark');
