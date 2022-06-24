@@ -7,6 +7,10 @@
     margin-bottom: 2rem;
 }
 
+.card:last-child {
+    margin-bottom: 0;
+}
+
 .card__header {
     padding: 2rem 2rem 0;
 }
