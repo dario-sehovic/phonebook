@@ -1,0 +1,36 @@
+.alert {
+    display: flex;
+    padding: 1rem;
+    border-radius: var(--global-border-radius);
+    font-size: 0.875rem;
+    color: var(--color-on-primary-container);
+    margin-bottom: 1rem;
+}
+
+.alert:last-child {
+    margin-bottom: 0;
+}
+
+.alert__icon {
+    margin-right: 1rem;
+}
+
+.alert__message {
+    flex: 1;
+}
+
+.alert--success {
+    background-color: var(--color-primary);
+}
+
+.alert--warning {
+    background-color: var(--color-primary);
+}
+
+.alert--danger {
+    background-color: var(--color-primary);
+}
+
+.alert--info {
+    background-color: var(--color-primary);
+}

@@ -6,6 +6,7 @@ import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
 import Phone from '../components/fields/Phone';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import Alert from '../components/Alert';
 import Text from '../components/fields/Text';
 import { auth } from '../services/firebase';
 import countries, { CountryCode } from '../localization/country-codes';
@@ -65,6 +66,7 @@ function Login() {
 
   const verifyForm = useMemo(() => (
     <form onSubmit={handleSubmit}>
+      <Alert message="A text message with a verification code has been sent to your phone number." />
       <fieldset disabled={loading}>
         <Text
           label="Verification code"
