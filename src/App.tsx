@@ -7,15 +7,18 @@ import {
 import * as Page from './pages';
 
 import './styles';
+import Theme from './services/Theme';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Page.Login />} />
-        <Route path="/" element={<Page.Home />} />
-      </Routes>
-    </Router>
+    <Theme>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Page.Login />} />
+          <Route path="/" element={<Page.Home />} />
+        </Routes>
+      </Router>
+    </Theme>
   );
 }
 
