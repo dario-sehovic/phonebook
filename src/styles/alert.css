@@ -5,6 +5,7 @@
     font-size: 0.875rem;
     color: var(--color-on-primary-container);
     margin-bottom: 1rem;
+    align-items: center;
 }
 
 .alert:last-child {

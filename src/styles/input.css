@@ -2,6 +2,7 @@
     width: 100%;
     position: relative;
     display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
 }
 
@@ -38,7 +39,7 @@
     line-height: 1.5rem;
     height: 4rem;
     min-height: 4rem;
-    max-height: 10rem;
+    max-height: 16rem;
     font-family: var(--global-font-family);
     border: 1px solid var(--color-outline);
     border-radius: var(--global-border-radius);
@@ -51,6 +52,7 @@
 }
 
 textarea.input__field {
+    min-height: 8rem;
     padding-top: 2rem;
 }
 
@@ -163,4 +165,14 @@ fieldset {
     margin: 0;
     padding: 0;
     border: none;
+}
+
+.input__field--error {
+    border-color: var(--color-error);
+}
+
+.input__error {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-error);
 }

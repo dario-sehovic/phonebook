@@ -4,6 +4,7 @@
     background-color: var(--color-surface);
     backdrop-filter: var(--global-backdrop-blur);
     box-shadow: var(--global-shadow-raised);
+    margin-bottom: 2rem;
 }
 
 .card__header {
