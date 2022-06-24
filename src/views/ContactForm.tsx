@@ -1,5 +1,4 @@
 import React, { useCallback, useState, useMemo } from 'react';
-import { mdiAbacus } from '@mdi/js';
 import * as Component from '../components';
 
 function ContactForm() {
