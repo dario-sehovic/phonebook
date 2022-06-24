@@ -58,6 +58,7 @@ function Home() {
             <div className="contact__actions" />
           </div>
         ))}
+        <Component.Field.TextArea value="" onChange={() => {}} label="Message" />
       </Component.Card>
     </div>
   );
