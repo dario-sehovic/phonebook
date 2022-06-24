@@ -1,0 +1,25 @@
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 0;
+    background-color: transparent;
+    color: var(--color-on-surface);
+    transition: var(--global-transition);
+    cursor: pointer;
+}
+
+.action:hover {
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface);
+}
+
+.action--selected {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+}

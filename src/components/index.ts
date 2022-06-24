@@ -1,3 +1,4 @@
+import Action from './Action';
 import Alert from './Alert';
 import Button from './Button';
 import Card from './Card';
@@ -15,6 +16,7 @@ const Field = {
 };
 
 export {
+  Action,
   Alert,
   Button,
   Card,
