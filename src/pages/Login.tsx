@@ -3,13 +3,9 @@ import React, {
 } from 'react';
 import { getCountryForTimezone } from 'countries-and-timezones';
 import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
-import Phone from '../components/fields/Phone';
-import Card from '../components/Card';
-import Button from '../components/Button';
-import Alert from '../components/Alert';
-import Text from '../components/fields/Text';
 import { auth } from '../services/firebase';
 import countries, { CountryCode } from '../localization/country-codes';
+import * as Component from '../components';
 
 function Login() {
   const recaptchaRef = useRef<any>(null);
@@ -52,37 +48,37 @@ function Login() {
   const loginForm = useMemo(() => (
     <form onSubmit={handleSubmit}>
       <fieldset disabled={loading}>
-        <Phone
+        <Component.Field.Phone
           label="Phone number"
           country={phoneCountry}
           value={phoneNumber}
           onChange={setPhoneNumber}
           onSelect={setPhoneCountry}
         />
-        <Button text={!loading ? 'Submit' : 'Submitting...'} loading={loading} />
+        <Component.Button text={!loading ? 'Submit' : 'Submitting...'} loading={loading} />
       </fieldset>
     </form>
   ), [handleSubmit, loading, phoneCountry, phoneNumber]);
 
   const verifyForm = useMemo(() => (
     <form onSubmit={handleSubmit}>
-      <Alert message="A text message with a verification code has been sent to your phone number." />
+      <Component.Alert message="A text message with a verification code has been sent to your phone number." />
       <fieldset disabled={loading}>
-        <Text
+        <Component.Field.Text
           label="Verification code"
           value={verificationCode}
           onChange={setVerificationCode}
         />
-        <Button text={!loading ? 'Verify' : 'Verifying...'} loading={loading} />
+        <Component.Button text={!loading ? 'Verify' : 'Verifying...'} loading={loading} />
       </fieldset>
     </form>
   ), [handleSubmit, loading, verificationCode]);
 
   return (
     <div className="container container--center">
-      <Card title="Login">
+      <Component.Card title="Login">
         {!success ? loginForm : verifyForm}
-      </Card>
+      </Component.Card>
       <div ref={recaptchaRef}>
         <div id="recaptcha" />
       </div>

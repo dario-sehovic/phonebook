@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import Login from './pages';
+import * as Page from './pages';
 
 import './styles';
 
@@ -12,7 +12,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Page.Login />} />
+        <Route path="/" element={<Page.Home />} />
       </Routes>
     </Router>
   );
