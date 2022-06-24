@@ -43,8 +43,11 @@ function Home() {
     if (filterEmptyEmails && !contact.emailAddress) return false;
     if (filterEmptyPhones && !contact.phoneNumber) return false;
 
-    return true;
-  }, [filterEmptyEmails, filterEmptyPhones]);
+    const haystack = (contact.firstName + contact.lastName).toLowerCase();
+    const needle = searchTerm.toLowerCase();
+
+    return haystack.includes(needle);
+  }, [filterEmptyEmails, filterEmptyPhones, searchTerm]);
 
   useEffect(() => {
     (async () => {
