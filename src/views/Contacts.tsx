@@ -41,9 +41,14 @@ function Contacts() {
         <div className="contact__name">
           {`${contact.firstName} ${contact.lastName}`}
         </div>
-        {(contact.phoneNumber || contact.emailAddress) && (
+        {contact.phoneNumber && (
           <div className="contact__details">
-            {contact.phoneNumber || contact.emailAddress}
+            {contact.phoneNumber}
+          </div>
+        )}
+        {contact.emailAddress && (
+          <div className="contact__details">
+            {contact.emailAddress}
           </div>
         )}
       </div>

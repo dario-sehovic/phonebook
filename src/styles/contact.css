@@ -1,8 +1,10 @@
 .contact {
+    height: 5rem;
     display: flex;
     margin: 0 -2rem;
     border-top: 1px solid var(--color-outline);
     padding: 1rem 2rem;
+    align-items: center;
 }
 
 .contact:last-child {
@@ -27,6 +29,7 @@
 .contact__name {
     color: var(--color-on-surface);
     font-size: 0.875rem;
+    line-height: 1;
     font-weight: bold;
 }
 
