@@ -2,6 +2,7 @@ import Action from './Action';
 import Alert from './Alert';
 import Button from './Button';
 import Card from './Card';
+import Contact from './Contact';
 
 import Phone from './fields/Phone';
 import Select from './fields/Select';
@@ -20,5 +21,6 @@ export {
   Alert,
   Button,
   Card,
+  Contact,
   Field,
 };

@@ -10,26 +10,22 @@ import {
 import { db } from '../services/firebase';
 import * as Component from '../components';
 import { useTheme, ThemeValues } from '../services/Theme';
+import { ContactProps } from '../components/Contact';
 
-export interface Contact {
+export interface ContactObject extends ContactProps {
   id: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber?: string;
-  emailAddress?: string;
-  photo: string;
 }
 
 function Home() {
   const { theme, toggleTheme } = useTheme();
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [contacts, setContacts] = useState<Array<Contact>>([]);
+  const [contacts, setContacts] = useState<Array<ContactObject>>([]);
   const [sortAscending, setSortAscending] = useState(true);
   const [filterEmptyEmails, setFilterEmptyEmails] = useState(false);
   const [filterEmptyPhones, setFilterEmptyPhones] = useState(false);
 
-  const sortContact = useCallback((prevContact: Contact, nextContact: Contact) => {
+  const sortContact = useCallback((prevContact: ContactObject, nextContact: ContactObject) => {
     const prevFullName = (prevContact.firstName + prevContact.lastName).toLowerCase();
     const nextFullName = (nextContact.firstName + nextContact.lastName).toLowerCase();
 
@@ -39,7 +35,7 @@ function Home() {
     return 0;
   }, [sortAscending]);
 
-  const filterContact = useCallback((contact: Contact) => {
+  const filterContact = useCallback((contact: ContactObject) => {
     if (filterEmptyEmails && !contact.emailAddress) return false;
     if (filterEmptyPhones && !contact.phoneNumber) return false;
 
@@ -52,40 +48,27 @@ function Home() {
   useEffect(() => {
     (async () => {
       const querySnapshot = await getDocs(query(collection(db, 'contacts')));
-      const newContacts: Array<Contact> = [];
+      const newContacts: Array<ContactObject> = [];
       querySnapshot.forEach((doc) => {
         newContacts.push({
           id: doc.id,
           ...doc.data(),
-        } as Contact);
+        } as ContactObject);
       });
       setContacts(newContacts);
       setLoading(false);
     })();
   }, []);
 
-  const getContact = useCallback((contact: Contact) => (
-    <div className="contact" key={contact.id}>
-      <div className="contact__image">
-        <img src={contact.photo} alt={`${contact.firstName} ${contact.lastName}`} />
-      </div>
-      <div className="contact__content">
-        <div className="contact__name">
-          {`${contact.firstName} ${contact.lastName}`}
-        </div>
-        {contact.phoneNumber && (
-        <div className="contact__details">
-          {contact.phoneNumber}
-        </div>
-        )}
-        {contact.emailAddress && (
-        <div className="contact__details">
-          {contact.emailAddress}
-        </div>
-        )}
-      </div>
-      <div className="contact__actions" />
-    </div>
+  const getContact = useCallback((contact: ContactObject) => (
+    <Component.Contact
+      key={contact.id}
+      firstName={contact.firstName}
+      lastName={contact.lastName}
+      phoneNumber={contact.phoneNumber}
+      emailAddress={contact.emailAddress}
+      photo={contact.photo}
+    />
   ), []);
 
   if (loading) return null;

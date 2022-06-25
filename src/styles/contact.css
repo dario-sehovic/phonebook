@@ -5,6 +5,7 @@
     border-top: 1px solid var(--color-outline);
     padding: 1rem 2rem;
     align-items: center;
+    position: relative;
 }
 
 .contact:last-child {
@@ -37,4 +38,15 @@
     margin-top: 0.25rem;
     color: var(--color-on-surface-variant);
     font-size: 0.75rem;
+}
+
+.contact__actions {
+    right: 1rem;
+    position: absolute;
+    opacity: 0;
+    transition: var(--global-transition);
+}
+
+.contact:hover .contact__actions {
+    opacity: 1;
 }
