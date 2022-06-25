@@ -92,21 +92,21 @@ function Home() {
 
   return (
     <div className="container">
-      <Component.Card>
+      <Component.Card sticky>
         <div className="action__group">
           <Component.Action
             icon={sortAscending ? mdiSortAlphabeticalAscending : mdiSortAlphabeticalDescending}
-            onClick={() => setSortAscending((prevSortAscending) => !prevSortAscending)}
+            onClick={() => setSortAscending((prevState) => !prevState)}
           />
           <Component.Action
             selected={filterEmptyPhones}
             icon={mdiPhoneOutline}
-            onClick={() => setFilterEmptyPhones((prevFilterEmptyPhones) => !prevFilterEmptyPhones)}
+            onClick={() => setFilterEmptyPhones((prevState) => !prevState)}
           />
           <Component.Action
             selected={filterEmptyEmails}
             icon={mdiEmailOutline}
-            onClick={() => setFilterEmptyEmails((prevFilterEmptyEmails) => !prevFilterEmptyEmails)}
+            onClick={() => setFilterEmptyEmails((prevState) => !prevState)}
           />
           <Component.Action
             icon={mdiLightbulbOutline}

@@ -5,10 +5,31 @@
     backdrop-filter: var(--global-backdrop-blur);
     box-shadow: var(--global-shadow-raised);
     margin-bottom: 2rem;
+    transition: var(--global-transition);
 }
 
 .card:last-child {
     margin-bottom: 0;
+}
+
+.card--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.card--magnified {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding: 0 2rem;
+    width: calc(100% + 4rem);
+}
+
+.card--magnified .action__group {
+    margin-left: -4rem;
+    margin-left: -4rem;
+    width: calc(100% + 8rem);
+    padding: 1rem 3rem;
 }
 
 .card__header {
