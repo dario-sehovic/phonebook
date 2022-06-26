@@ -85,10 +85,9 @@ function Contact({ onClose }: ContactProps) {
           error={errorMessages.message}
         />
         <Component.Button text={!loading ? 'Send' : 'Sending...'} loading={loading} />
-        <Component.Button text="Close" onClick={onClose} type="button" variant="secondary" />
       </fieldset>
     </form>
-  ), [email, errorMessages, handleSubmit, loading, message, name, subject, onClose]);
+  ), [email, errorMessages, handleSubmit, loading, message, name, subject]);
 
   const successAlert = useMemo(() => (
     <Component.Alert variant="success" message="Message sent successfully." />
@@ -96,7 +95,7 @@ function Contact({ onClose }: ContactProps) {
 
   return (
     <div className="container">
-      <Component.Card title="Get in Touch">
+      <Component.Card title="Get in Touch" onClose={onClose}>
         {!success ? contactForm : successAlert}
       </Component.Card>
     </div>

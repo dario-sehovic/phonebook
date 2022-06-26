@@ -1,11 +1,23 @@
 .card {
+    position: relative;
     width: 100%;
     border-radius: var(--global-border-radius);
-    background-color: var(--color-surface);
-    backdrop-filter: var(--global-backdrop-blur);
     box-shadow: var(--global-shadow-raised);
     margin-bottom: 2rem;
     transition: var(--global-transition);
+}
+
+.card::before {
+    position: absolute;
+    background-color: var(--color-surface);
+    backdrop-filter: var(--global-backdrop-blur);
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--global-border-radius);
+    z-index: -1;
 }
 
 .card:last-child {
@@ -34,6 +46,13 @@
 
 .card__header {
     padding: 2rem 2rem 0;
+    position: relative;
+}
+
+.card__header .action {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 .card__content {
@@ -49,5 +68,6 @@
     font-family: var(--global-font-family);
     font-weight: bold;
     font-size: 1.25rem;
+    line-height: 1;
     margin: 0;
 }

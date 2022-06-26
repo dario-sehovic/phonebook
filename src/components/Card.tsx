@@ -1,14 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
+import { mdiClose } from '@mdi/js';
+import Action from './Action';
 
 interface CardProps {
   children: React.ReactNode;
+  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   sticky?: boolean;
   title?: string;
 }
 
 function Card({
   children,
+  onClose,
   sticky,
   title,
 }: CardProps) {
@@ -42,6 +46,7 @@ function Card({
           <h2 className="card__title">
             {title}
           </h2>
+          {onClose && <Action onClick={onClose} icon={mdiClose} />}
         </div>
       )}
       <div className="card__content">

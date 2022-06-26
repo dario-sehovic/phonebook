@@ -56,6 +56,10 @@
     background-color: var(--color-tertiary);
 }
 
+.button--error {
+    background-color: var(--color-error);
+}
+
 .button:last-child {
     margin-right: 0;
 }

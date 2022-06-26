@@ -5,7 +5,7 @@ import { mdiLoading } from '@mdi/js';
 import classNames from 'classnames';
 
 type ButtonType = 'submit' | 'button' | 'link' | 'label';
-type ButtonVariant = 'primary' | 'secondary' | 'success' | 'tertiary';
+type ButtonVariant = 'primary' | 'secondary' | 'success' | 'tertiary' | 'error';
 
 interface ButtonProps {
   block?: boolean;
