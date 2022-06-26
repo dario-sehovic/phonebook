@@ -14,21 +14,27 @@ import { useTheme, ThemeValues } from '../services/Theme';
 import { ContactProps } from '../components/Contact';
 import Contact from './Contact';
 
-export interface ContactObject extends ContactProps {
-  id: string;
-}
-
 function Home() {
   const { theme, toggleTheme } = useTheme();
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [contacts, setContacts] = useState<Array<ContactObject>>([]);
+  const [contacts, setContacts] = useState<Array<ContactProps>>([]);
   const [sortAscending, setSortAscending] = useState(true);
   const [filterEmptyEmails, setFilterEmptyEmails] = useState(false);
   const [filterEmptyPhones, setFilterEmptyPhones] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
 
-  const sortContact = useCallback((prevContact: ContactObject, nextContact: ContactObject) => {
+  const handleEdit = useCallback((id: string, newContact: any) => {
+    setContacts((prevContacts) => {
+      const newContacts = [...prevContacts];
+      const newContactIndex = newContacts.findIndex((contact) => contact.id === id);
+      newContacts[newContactIndex] = { id, ...newContact };
+
+      return newContacts;
+    });
+  }, []);
+
+  const sortContact = useCallback((prevContact: ContactProps, nextContact: ContactProps) => {
     const prevFullName = (prevContact.firstName + prevContact.lastName).toLowerCase();
     const nextFullName = (nextContact.firstName + nextContact.lastName).toLowerCase();
 
@@ -38,7 +44,7 @@ function Home() {
     return 0;
   }, [sortAscending]);
 
-  const filterContact = useCallback((contact: ContactObject) => {
+  const filterContact = useCallback((contact: ContactProps) => {
     if (filterEmptyEmails && !contact.emailAddress) return false;
     if (filterEmptyPhones && !contact.phoneNumber) return false;
 
@@ -51,28 +57,30 @@ function Home() {
   useEffect(() => {
     (async () => {
       const querySnapshot = await getDocs(query(collection(db, 'contacts')));
-      const newContacts: Array<ContactObject> = [];
+      const newContacts: Array<ContactProps> = [];
       querySnapshot.forEach((doc) => {
         newContacts.push({
           id: doc.id,
           ...doc.data(),
-        } as ContactObject);
+        } as ContactProps);
       });
       setContacts(newContacts);
       setLoading(false);
     })();
   }, []);
 
-  const getContact = useCallback((contact: ContactObject) => (
+  const getContact = useCallback((contact: ContactProps) => (
     <Component.Contact
       key={contact.id}
+      id={contact.id}
       firstName={contact.firstName}
       lastName={contact.lastName}
       phoneNumber={contact.phoneNumber}
       emailAddress={contact.emailAddress}
       photo={contact.photo}
+      onEdit={handleEdit}
     />
-  ), []);
+  ), [handleEdit]);
 
   if (loading) return null;
 
