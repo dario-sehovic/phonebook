@@ -12,6 +12,7 @@ export interface ContactProps {
   emailAddress?: string;
   photo: string;
   onEdit: (id: string, newContact: any) => any;
+  onDelete: (id: string) => any;
 }
 
 function Contact({
@@ -22,6 +23,7 @@ function Contact({
   emailAddress,
   photo,
   onEdit,
+  onDelete,
 }: ContactProps) {
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -61,6 +63,7 @@ function Contact({
           emailAddress={emailAddress}
           onClose={() => setShowEditModal(false)}
           onEdit={onEdit}
+          onDelete={onDelete}
         />
       </Modal>
     </div>

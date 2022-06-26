@@ -24,6 +24,16 @@ function Home() {
   const [filterEmptyPhones, setFilterEmptyPhones] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
 
+  const handleDelete = useCallback((id: string) => {
+    setContacts((prevContacts) => {
+      const newContacts = [...prevContacts];
+      const newContactIndex = newContacts.findIndex((contact) => contact.id === id);
+      newContacts.splice(newContactIndex, 1);
+
+      return newContacts;
+    });
+  }, []);
+
   const handleEdit = useCallback((id: string, newContact: any) => {
     setContacts((prevContacts) => {
       const newContacts = [...prevContacts];
@@ -79,8 +89,9 @@ function Home() {
       emailAddress={contact.emailAddress}
       photo={contact.photo}
       onEdit={handleEdit}
+      onDelete={handleDelete}
     />
-  ), [handleEdit]);
+  ), [handleDelete, handleEdit]);
 
   if (loading) return null;
 

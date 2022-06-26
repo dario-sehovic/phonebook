@@ -17,8 +17,9 @@ export interface EditProps {
   phoneNumber?: string;
   emailAddress?: string;
   photo: string;
-  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose: (event?: React.MouseEvent<HTMLButtonElement>) => void;
   onEdit: (id: string, newContact: any) => any;
+  onDelete: (id: string) => any;
 }
 
 function Edit({
@@ -30,6 +31,7 @@ function Edit({
   photo,
   onClose,
   onEdit,
+  onDelete,
 }: EditProps) {
   const currentCountry = getCountryForTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)?.id || 'EN';
   const newFormattedCountry = phoneNumber ? parsePhoneNumber(phoneNumber ?? '').country as string : currentCountry;
@@ -54,9 +56,12 @@ function Edit({
 
       setLoading(false);
       setDeleteSuccess(true);
-      setTimeout(onClose, 2000);
+      setTimeout(() => {
+        onClose();
+        setTimeout(() => onDelete(id), 20);
+      }, 2000);
     })();
-  }, [id, onClose]);
+  }, [id, onClose, onDelete]);
 
   const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -174,7 +179,7 @@ function Edit({
       <Card title="Edit Contact" onClose={onClose}>
         {!saveSuccess && !deleteSuccess && editForm}
         {saveSuccess && <Alert message="Contact saved successfully." variant="success" />}
-        {deleteSuccess && <Alert message="Contacts deleted successfully." variant="success" />}
+        {deleteSuccess && <Alert message="Contact deleted successfully." variant="success" />}
       </Card>
     </div>
   );
