@@ -9,3 +9,4 @@ import './card.css';
 import './contact.css';
 import './container.css';
 import './input.css';
+import './modal.css';

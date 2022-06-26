@@ -3,6 +3,7 @@ import Alert from './Alert';
 import Button from './Button';
 import Card from './Card';
 import Contact from './Contact';
+import Modal from './Modal';
 
 import Phone from './fields/Phone';
 import Select from './fields/Select';
@@ -22,5 +23,6 @@ export {
   Button,
   Card,
   Contact,
+  Modal,
   Field,
 };
