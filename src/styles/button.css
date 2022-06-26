@@ -48,7 +48,8 @@
 }
 
 .button--secondary {
-    background-color: var(--color-secondary);
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface-variant);
 }
 
 .button--tertiary {

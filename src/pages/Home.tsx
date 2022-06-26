@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { collection, getDocs, query } from 'firebase/firestore';
 import {
+  mdiAt,
   mdiEmailOutline,
   mdiLightbulbOutline,
   mdiPhoneOutline,
@@ -11,6 +12,7 @@ import { db } from '../services/firebase';
 import * as Component from '../components';
 import { useTheme, ThemeValues } from '../services/Theme';
 import { ContactProps } from '../components/Contact';
+import Contact from './Contact';
 
 export interface ContactObject extends ContactProps {
   id: string;
@@ -24,6 +26,7 @@ function Home() {
   const [sortAscending, setSortAscending] = useState(true);
   const [filterEmptyEmails, setFilterEmptyEmails] = useState(false);
   const [filterEmptyPhones, setFilterEmptyPhones] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const sortContact = useCallback((prevContact: ContactObject, nextContact: ContactObject) => {
     const prevFullName = (prevContact.firstName + prevContact.lastName).toLowerCase();
@@ -88,13 +91,17 @@ function Home() {
           />
           <Component.Action
             selected={filterEmptyEmails}
-            icon={mdiEmailOutline}
+            icon={mdiAt}
             onClick={() => setFilterEmptyEmails((prevState) => !prevState)}
           />
           <Component.Action
             icon={mdiLightbulbOutline}
             onClick={toggleTheme}
             selected={theme === ThemeValues.Light}
+          />
+          <Component.Action
+            icon={mdiEmailOutline}
+            onClick={() => setShowContactModal(true)}
           />
           <Component.Action
             icon={mdiPower}
@@ -110,6 +117,9 @@ function Home() {
       <Component.Card title="Contacts">
         {contacts.filter(filterContact).sort(sortContact).map(getContact)}
       </Component.Card>
+      <Component.Modal open={showContactModal}>
+        <Contact onClose={() => setShowContactModal(false)} />
+      </Component.Modal>
     </div>
   );
 }

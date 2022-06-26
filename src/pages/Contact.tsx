@@ -1,7 +1,11 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import * as Component from '../components';
 
-function ContactForm() {
+export interface ContactProps {
+  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+function Contact({ onClose }: ContactProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState('');
@@ -81,19 +85,22 @@ function ContactForm() {
           error={errorMessages.message}
         />
         <Component.Button text={!loading ? 'Send' : 'Sending...'} loading={loading} />
+        <Component.Button text="Close" onClick={onClose} type="button" variant="secondary" />
       </fieldset>
     </form>
-  ), [email, errorMessages, handleSubmit, loading, message, name, subject]);
+  ), [email, errorMessages, handleSubmit, loading, message, name, subject, onClose]);
 
   const successAlert = useMemo(() => (
     <Component.Alert variant="success" message="Message sent successfully." />
   ), []);
 
   return (
-    <Component.Card title="Get in Touch">
-      {!success ? contactForm : successAlert}
-    </Component.Card>
+    <div className="container">
+      <Component.Card title="Get in Touch">
+        {!success ? contactForm : successAlert}
+      </Component.Card>
+    </div>
   );
 }
 
-export default ContactForm;
+export default Contact;
