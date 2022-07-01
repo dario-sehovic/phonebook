@@ -96,13 +96,15 @@ function Edit({
     (async () => {
       const countryNumber = `+${countries.find((country: CountryCode) => country.code === newPhoneCountry)?.phone}`;
       const newFullPhoneNumber = `${countryNumber} ${newPhoneNumber}`;
-      const newContact = {
+      const newContact: Record<string, string> = {
         firstName: newFirstName,
         lastName: newLastName,
-        phoneNumber: newFullPhoneNumber,
         emailAddress: newEmailAddress,
         photo: newPhoto,
       };
+
+      if (newPhoneNumber) newContact.phoneNumber = newFullPhoneNumber;
+
       await setDoc(doc(db, 'contacts', id), newContact);
 
       onEdit(id, newContact);

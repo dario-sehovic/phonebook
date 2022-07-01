@@ -25,11 +25,11 @@
 }
 
 .alert--warning {
-    background-color: var(--color-primary);
+    background-color: var(--color-error);
 }
 
 .alert--danger {
-    background-color: var(--color-primary);
+    background-color: var(--color-error);
 }
 
 .alert--info {

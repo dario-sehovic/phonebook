@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import Icon from '@mdi/react';
-import { mdiInformation, mdiCheck } from '@mdi/js';
+import { mdiInformation, mdiCheck, mdiAlertCircleOutline } from '@mdi/js';
 import classNames from 'classnames';
 
 export type AlertVariant = 'success' | 'warning' | 'danger' | 'info';
@@ -21,8 +21,8 @@ function Alert({
 
   const getIconPath = useCallback(() => {
     if (variant === 'success') return mdiCheck;
-    if (variant === 'warning') return mdiCheck;
-    if (variant === 'danger') return mdiCheck;
+    if (variant === 'warning') return mdiAlertCircleOutline;
+    if (variant === 'danger') return mdiAlertCircleOutline;
 
     return mdiInformation;
   }, [variant]);

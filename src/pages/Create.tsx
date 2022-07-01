@@ -62,13 +62,14 @@ function Create({
     (async () => {
       const countryNumber = `+${countries.find((country: CountryCode) => country.code === newPhoneCountry)?.phone}`;
       const newFullPhoneNumber = `${countryNumber} ${newPhoneNumber}`;
-      const newContact = {
+      const newContact: Record<string, string> = {
         firstName: newFirstName,
         lastName: newLastName,
-        phoneNumber: newFullPhoneNumber,
         emailAddress: newEmailAddress,
         photo: newPhoto,
       };
+
+      if (newPhoneNumber) newContact.phoneNumber = newFullPhoneNumber;
       const docRef = await addDoc(collection(db, 'contacts'), newContact);
 
       onCreate({ id: docRef.id, ...newContact });
