@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { mdiClose } from '@mdi/js';
+import { mdiClose, mdiPlus } from '@mdi/js';
 import Action from './Action';
 
 interface CardProps {
   children: React.ReactNode;
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onAddNew?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   sticky?: boolean;
   title?: string;
 }
@@ -13,6 +14,7 @@ interface CardProps {
 function Card({
   children,
   onClose,
+  onAddNew,
   sticky,
   title,
 }: CardProps) {
@@ -47,6 +49,7 @@ function Card({
             {title}
           </h2>
           {onClose && <Action onClick={onClose} icon={mdiClose} helpText="Close" />}
+          {onAddNew && <Action onClick={onAddNew} icon={mdiPlus} helpText="Add new" />}
         </div>
       )}
       <div className="card__content">

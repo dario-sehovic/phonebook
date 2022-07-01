@@ -13,6 +13,7 @@ import * as Component from '../components';
 import { useTheme, ThemeValues } from '../services/Theme';
 import { ContactProps } from '../components/Contact';
 import Contact from './Contact';
+import Create from './Create';
 
 function Home() {
   const { theme, toggleTheme } = useTheme();
@@ -23,6 +24,16 @@ function Home() {
   const [filterEmptyEmails, setFilterEmptyEmails] = useState(false);
   const [filterEmptyPhones, setFilterEmptyPhones] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
+  const [showCreateContactModal, setShowCreateContactModal] = useState(false);
+
+  const handleCreate = useCallback((newContact: any) => {
+    setContacts((prevContacts) => {
+      const newContacts = [...prevContacts];
+      newContacts.push(newContact);
+
+      return newContacts;
+    });
+  }, []);
 
   const handleDelete = useCallback((id: string) => {
     setContacts((prevContacts) => {
@@ -141,11 +152,14 @@ function Home() {
           onChange={setSearchTerm}
         />
       </Component.Card>
-      <Component.Card title="Contacts">
+      <Component.Card title="Contacts" onAddNew={() => setShowCreateContactModal(true)}>
         {contactsToRender.length ? contactsToRender : <Component.Alert message="No results." />}
       </Component.Card>
       <Component.Modal open={showContactModal}>
         <Contact onClose={() => setShowContactModal(false)} />
+      </Component.Modal>
+      <Component.Modal open={showCreateContactModal}>
+        <Create onCreate={handleCreate} onClose={() => setShowCreateContactModal(false)} />
       </Component.Modal>
     </div>
   );
