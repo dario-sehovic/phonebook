@@ -95,6 +95,8 @@ function Home() {
 
   if (loading) return null;
 
+  const contactsToRender = contacts.filter(filterContact).sort(sortContact).map(getContact);
+
   return (
     <div className="container">
       <Component.Card sticky>
@@ -140,7 +142,7 @@ function Home() {
         />
       </Component.Card>
       <Component.Card title="Contacts">
-        {contacts.filter(filterContact).sort(sortContact).map(getContact)}
+        {contactsToRender.length ? contactsToRender : <Component.Alert message="No results." />}
       </Component.Card>
       <Component.Modal open={showContactModal}>
         <Contact onClose={() => setShowContactModal(false)} />
