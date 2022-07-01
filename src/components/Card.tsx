@@ -46,7 +46,7 @@ function Card({
           <h2 className="card__title">
             {title}
           </h2>
-          {onClose && <Action onClick={onClose} icon={mdiClose} />}
+          {onClose && <Action onClick={onClose} icon={mdiClose} helpText="Close" />}
         </div>
       )}
       <div className="card__content">

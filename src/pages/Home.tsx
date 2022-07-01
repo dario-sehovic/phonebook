@@ -102,29 +102,35 @@ function Home() {
           <Component.Action
             icon={sortAscending ? mdiSortAlphabeticalAscending : mdiSortAlphabeticalDescending}
             onClick={() => setSortAscending((prevState) => !prevState)}
+            helpText={sortAscending ? 'Sort descending' : 'Sort ascending'}
           />
           <Component.Action
             selected={filterEmptyPhones}
             icon={mdiPhoneOutline}
             onClick={() => setFilterEmptyPhones((prevState) => !prevState)}
+            helpText="Show contacts with phone number"
           />
           <Component.Action
             selected={filterEmptyEmails}
             icon={mdiAt}
             onClick={() => setFilterEmptyEmails((prevState) => !prevState)}
+            helpText="Show contacts with email"
           />
           <Component.Action
             icon={mdiLightbulbOutline}
             onClick={toggleTheme}
             selected={theme === ThemeValues.Light}
+            helpText="Turn on the lights"
           />
           <Component.Action
             icon={mdiEmailOutline}
             onClick={() => setShowContactModal(true)}
+            helpText="Get in touch"
           />
           <Component.Action
             icon={mdiPower}
             onClick={() => {}}
+            helpText="Log out"
           />
         </div>
         <Component.Field.Text
