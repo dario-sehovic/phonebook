@@ -15,7 +15,11 @@ import { ContactProps } from '../components/Contact';
 import Contact from './Contact';
 import Create from './Create';
 
-function Home() {
+interface HomeProps {
+  onLogOut: () => void;
+}
+
+function Home({ onLogOut }: HomeProps) {
   const { theme, toggleTheme } = useTheme();
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -142,7 +146,7 @@ function Home() {
           />
           <Component.Action
             icon={mdiPower}
-            onClick={() => {}}
+            onClick={onLogOut}
             helpText="Log out"
           />
         </div>

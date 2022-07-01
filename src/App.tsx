@@ -1,23 +1,16 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import React, { useState } from 'react';
 import * as Page from './pages';
 
 import './styles';
 import Theme from './services/Theme';
 
 function App() {
+  const [login, setLogin] = useState(false);
+
   return (
     <Theme>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Page.Login />} />
-          <Route path="/" element={<Page.Home />} />
-        </Routes>
-      </Router>
+      {login && <Page.Home onLogOut={() => setLogin(false)} />}
+      {!login && <Page.Login onLogIn={() => setLogin(true)} />}
     </Theme>
   );
 }

@@ -7,7 +7,11 @@ import { auth } from '../services/firebase';
 import countries, { CountryCode } from '../localization/country-codes';
 import * as Component from '../components';
 
-function Login() {
+interface LoginProps {
+  onLogIn: () => void;
+}
+
+function Login({ onLogIn }: LoginProps) {
   const recaptchaRef = useRef<any>(null);
 
   const currentCountry = getCountryForTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)?.id || 'EN';
@@ -45,6 +49,16 @@ function Login() {
       });
   }, [phoneCountry, phoneNumber]);
 
+  const handleLogin = useCallback((event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      onLogIn();
+    }, 500);
+  }, [onLogIn]);
+
   const loginForm = useMemo(() => (
     <form onSubmit={handleSubmit}>
       <fieldset disabled={loading}>
@@ -61,7 +75,7 @@ function Login() {
   ), [handleSubmit, loading, phoneCountry, phoneNumber]);
 
   const verifyForm = useMemo(() => (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleLogin}>
       <Component.Alert message="A text message with a verification code has been sent to your phone number." />
       <fieldset disabled={loading}>
         <Component.Field.Text
@@ -72,7 +86,7 @@ function Login() {
         <Component.Button text={!loading ? 'Verify' : 'Verifying...'} loading={loading} />
       </fieldset>
     </form>
-  ), [handleSubmit, loading, verificationCode]);
+  ), [handleLogin, loading, verificationCode]);
 
   return (
     <div className="container container--center">
