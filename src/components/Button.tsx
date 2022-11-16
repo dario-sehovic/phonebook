@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import classNames from 'classnames';
@@ -12,7 +11,6 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   loading?: boolean;
   text?: string;
-  to?: string;
   type?: ButtonType;
   variant?: ButtonVariant;
 }
@@ -22,7 +20,6 @@ function Button({
   loading,
   onClick,
   text = 'Submit',
-  to = '/',
   type = 'submit',
   variant = 'primary',
 }: ButtonProps) {
@@ -41,7 +38,6 @@ function Button({
     );
   }
 
-  if (type === 'link') return <Link to={to} className={buttonClassNames}>{text}</Link>;
   if (type === 'submit') return <button type="submit" className={buttonClassNames}>{text}</button>;
   if (type === 'label') return <span className={buttonClassNames}>{text}</span>;
   return <button type="button" className={buttonClassNames} onClick={onClick}>{text}</button>;
